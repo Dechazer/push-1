@@ -1,0 +1,527 @@
+
+
+:root{
+    --green: #16a085;
+    --black: #444;
+    --white: #fff;
+    --light-color: #777;
+    --box-shadow: .5rem .5rem rgba(22, 160, 133, .2);
+    --text-shadow: .4rem .4rem rgba(0, 0, 0, .2); 
+    --border:.2rem solid var(--green);
+    
+}
+
+
+*{
+    font-size: 'Poppins' sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none; outline: none; border: none;
+    text-transform: capitalize;
+    transition: all .2s ease-out;
+}
+
+html{
+    font-size: 62.5%;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    scroll-padding-top: 7rem;
+
+}
+
+section{
+    padding: 2rem 9%;
+}
+
+section:nth-child(even){    /* makes the second section which is even have the given background*/
+    background: #f5f5f5;
+}
+
+
+.header{
+    padding: 2rem 9%; /*rem means from top, % mean from right*/
+    position: fixed;
+    top: 0; left: 0; right:0;
+    z-index: 1000;
+    box-shadow: 0 .5rem 1.5rem rgba(0, 0, 0, .1); /* a smaller upper part like a frame is created*/
+    display: flex; /* items appears in one column horizontally same level*/
+    align-items: center;
+    justify-content: space-between;
+    background: #fff;
+
+}
+.header .logo{
+    font-size: 2.5rem;
+    color: black;
+    font-weight: 600;
+}
+.header .logo i{
+    color: var(--green);
+}
+.header .navbar a{
+    color: var(--light-color);
+    font-size: 1.5rem;
+    margin-left: 2rem; /* sets distance between the navbars accordingly from the left. if you set it into right it will work also*/
+}
+.header .navbar a:hover{
+    color: var(--green);
+}
+
+
+#menu-btn{
+    font-size: 2.5rem;
+    color: var(--green);
+    background: #eee;
+    cursor: pointer;
+    border-radius: .5rem;
+    padding: 1rem 1.5rem; /* 1 rem reps distance between the menu-btn and the sorrounding from top to bottom, 1.5rem is from left to right*/
+    display: none;
+    /*From here lets jump to Media queries..follow up..*/
+}
+.container{
+    padding: 21rem 9%;
+}
+
+/*--------------Media queries-------------*/
+@media (max-width: 450px){
+    #menu-btn{
+        display: initial;
+    }
+    .header .navbar{
+        position: absolute;
+        top: 115%; right: 2rem;
+        border-radius: .5rem;
+        box-shadow: var(--box-shadow);
+        width: 30rem;
+        background: #fff;
+        border: var(--border);
+        transform: scale(0);
+        opacity: 0;
+        transform-origin: top right;
+        transition: none;
+    }
+    .header .navbar a{
+        font-size: 2rem;
+        display: block;
+        margin: 2.5rem;
+    }
+    .header .navbar.active{ /* .active is taken from the js file to carry out operations on the navbars*/
+        transform: scale(1); /* makes the navbars visible when set to 1 when set to 0, navbars are hidden*/
+        opacity: 1;
+        transition: .2s ease-out;
+    }
+    section{
+        padding: 2rem;  /*makes the section contents appear on the left side rather than on the center..revisit*/
+    }
+}
+
+@media (max-width: 450px){
+    html{
+        font-size: 50%;
+        
+    }
+    .header{
+        padding: 2rem;
+    }
+
+}
+
+.Home{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap:1.5rem;
+    padding-top: 10rem;
+}
+.Home .image{
+    flex: 1 1 45rem;
+    border-radius: 10px;
+    
+}
+.Home .image img{
+    width: 100%;
+    border-radius: 10px;
+    
+}
+
+.Home .image :hover{
+    /* background: #90EE90;
+    color: #fff; */
+    transform: translateY(10px);
+    transition: background 0.5s, transform 0.5s;
+}
+.Home .content{
+    flex: 1 1 45rem;
+    
+}
+.Home .content h3{
+    font-size: 4.5rem;
+    color: var(--black);
+    line-height: 1.8;
+    text-shadow: var(--text-shadow);
+}
+
+.Home .content p{
+    font-size: 1.7rem;
+    color: var(--light-color);
+    line-height: 1.8;
+    padding: 2rem 1;
+}
+
+.btn{
+    margin-top: 1rem;
+    padding: .5rem;
+    padding-left: 1rem;
+    border: var(--border);
+    display: inline-block;
+    cursor: pointer;
+    box-shadow: var(--box-shadow);
+    color: var(--green);
+    font-size: 1.8rem;
+    border-radius: 1rem;
+}
+
+.btn span{
+    padding: .7rem 1rem;
+    border-radius: 0.5rem;
+    background: var(--green);
+    color: #fff;
+    margin-left: .6rem;
+}
+.btn:hover{
+    background: var(--green);
+    color: #fff;
+}
+.btn:hover span{
+    color: green;
+    background: #fff;
+    margin-left: 1rem;
+}
+
+.icon-container{
+    display: grid;
+    gap: 2rem;
+    /* display: flex;
+    justify-content: space-between; */
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr)); /*makes the contents aligh horizontally the above commented properties serve same purpose
+                                                                  the reson to use this one is to have the contents at a specific place}*/
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+    
+}
+
+.icon-container :hover{
+    background: #90EE90;
+    color: #fff;
+    transform: translateY(-10px);
+    transition: background 0.5s, transform 0.5s;
+
+}
+
+.icon-container .icons{
+    text-align: center;
+    border: var(--border);
+    box-shadow: var(--box-shadow);
+    border-radius: .5rem;
+    padding: 2rem;
+    border-radius: 1.5rem;
+}
+
+.icon-container .icons i{
+    font-size: 4rem;
+    color: var(--green);
+    padding-bottom: 1rem;
+}
+
+.icon-container .icons h3{
+    font-size: 4rem;
+    color: var(--black);
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    padding: .6rem;
+    text-shadow: var(--text-shadow);
+}
+
+/*--------------SERVICES SECTION*/
+.heading{
+    text-align: center;
+    padding: 2rem;
+    font-size: 4.5rem;
+    text-shadow: var(--text-shadow);
+    
+}
+
+.icon-container .icons p{
+    font-size: 1.7rem;
+    color: var(--light-color);
+    padding-bottom: 1rem;
+}
+.services .box-container{
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(27rem, 1fr));
+   
+}
+
+.services .box-container .box:hover{
+    background: #90EE90;
+    color: #fff;
+    transform: translateY(-10px);
+    transition: background 0.5s, transform 0.5s;
+}
+
+.services .box-container .box{
+    box-shadow: var(--box-shadow);
+    border-radius: 1.5rem;
+    border: var(--border);
+    padding: 2rem;
+}
+
+.services .box-container .box i{
+    color: var(--green);
+    font-size: 4rem;
+}
+
+.services .box-container .box h3{
+    color: var(--black);
+    font-size: 2.5rem;
+    padding: 1.5rem 0;
+}
+
+.services .box-container .box p{
+    color: var(--light-color);
+    font-size: 1.5rem;
+    padding: 1.5rem 0;
+}
+
+.book .row{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: space-between;
+}
+.book .row .image{
+    flex: 1 1 45rem;
+}
+
+.book .row .image img{
+    width: 100%;
+}
+
+.book .row form{
+    background: #fff;
+    flex: 1 1 45rem;
+    border: var(--border); /* sets border to form elements*/
+    box-shadow: var(--box-shadow);
+    text-align: center;
+    padding: 2rem;
+    border-radius: .5rem;
+}
+
+.book .row form h3{
+    color: black;
+    padding-bottom: 6px;
+    font-size: 24px;
+}
+
+.book .row form .box{
+    width: 80%;
+    margin: 10px 0;
+    border: var(--border);
+    padding: 4px;
+    border-radius: 5px;
+    color: var(--black);
+    text-transform: none;
+}
+
+.book .row form .btn{
+    padding: 10px 12px;
+}
+
+.reviews .box-container{
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(27rem, 1fr));
+    
+}
+
+.reviews .box-container .box{
+    border: var(--border);
+    box-shadow: var(--box-shadow);
+    border-radius: .5rem;
+    padding: 2.5rem;
+    text-align: center;
+    background: #fff;
+    position: relative;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.reviews .box-container .box img{
+    background-color: white;
+    box-shadow: rgba(9, 30, 70, 0.1) 0px 0px 30px -5px;
+    width: 10rem;
+    height: 10rem;
+    border-radius: 50%;
+    object-fit: cover;
+    border: .3rem solid #fff;
+   
+}
+
+.reviews .box-container .box h3{
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: black;
+}
+
+.reviews .box-container .box .stars i {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    font-style: normal;
+    font-size: 1.5rem;
+    color: goldenrod;
+    margin-bottom: 1.5rem;
+}
+
+.reviews .box-container .box .text{
+    max-width: 45ch;
+    font-size: 1.2rem;
+    font-family: sans-serif;
+    color: var(--light-color);
+    padding-top: 4rem;
+}
+
+.reviews .box-container .box::before{
+    content: "";
+    position: absolute;
+    top: -4rem; left: 50%; /* takes up the entire space */
+    transform: -4rem;
+    background: var(--green);
+    border-bottom-left-radius: 50%;
+    border-bottom-right-radius: 50%;
+    height: 25rem;
+    width: 120%;
+    transform: translateX(-50%);
+    z-index: -1; /*makes the items come infront of the 'shaded region'*/
+}
+
+.footer .box-container{
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(22rem, 1fr));
+    
+}
+
+.footer .box-container .box h3{
+    font-size: 2.5rem;
+    color: var(--black);
+    padding: 1rem;
+}
+
+.footer .box-container .box a{
+    display: block;
+    font-size: 1.5rem;
+    color: var(--light-color);
+    padding: 1rem;
+}
+
+.footer .box-container .box a i{
+    padding-right: .5rem;
+    color: var(--green);
+}
+
+.footer .box-container .box a:hover i{
+    padding-right: 1rem;
+}
+
+.footer .credit{
+    text-align: center;
+    margin-top: 2rem;
+    color: var(--light-color);
+    font-size: 1.8rem;
+}
+.footer .credit span{
+    color: var(--green);
+}
+
+/*-----ABOUT SECTION*/
+.about .row{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.about .row .image{
+    flex: 1 1 45rem;
+}
+
+.about .row .image img{
+    width: 100%;
+}
+
+.about .row .content{
+    flex: 1 1 45rem;
+}
+
+.about .row .content h2{
+    color: var(--black);
+    font-size: 3rem;
+    text-shadow: var(--text-shadow);
+    line-height: 1.8;
+    margin-bottom: 4px;
+}
+
+.about .row .content p{
+    color: var(--light-color);
+    font-size: 1.5rem;
+    line-height: 1.8;
+}
+
+.contact .row{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.contact .row .image{
+    flex: 1 1 45rem;
+    border-radius: 50%;
+    height: 50rem;
+    width: 50rem;
+}
+
+.contact .row .image img{
+    width: 100%;
+}
+
+.contact .row .info{
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+    
+}
+
+.contact .row .info h3{
+    font-weight: bold;
+    font-size: 2.5rem;
+    margin-bottom: 3.5rem;
+}
+
+.contact .row .info a{
+    display: block;
+    font-size: 1.5rem;
+    color: var(--light-color);
+    padding: 2rem;
+}
+
+.contact .row .info a i{
+    padding-right: .5rem;
+    color: var(--green);
+}
+
+.contact .row .info a:hover i{
+    padding-right: 1rem;
+}
